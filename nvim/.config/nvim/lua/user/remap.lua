@@ -6,7 +6,7 @@
 -- term_mode = "t",
 -- command_mode = "c",
 
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
 -- Set leader key
@@ -16,9 +16,9 @@ vim.g.mapleader = " "
 map("n", "<leader><CR>", "<cmd>source %<CR>", opts)
 
 -- buffer navigation
-map("n", "<leader>bn", "<cmd>bnext<CR>", opts)
-map("n", "<leader>bp", "<cmd>bprevious<CR>", opts)
-map("n", "<leader>bd", "<cmd>bdelete<CR>", opts)
+map("n", "<leader>nb", "<cmd>bnext<CR>", opts)
+map("n", "<leader>pb", "<cmd>bprevious<CR>", opts)
+map("n", "<leader>db", "<cmd>bdelete<CR>", opts)
 
 -- Window navigation
 map("n", "<C-j>", "<C-w>j", opts)
@@ -33,7 +33,7 @@ map("n", "<S-Left>", "<cmd>vertical resize -2<CR>", opts)
 map("n", "<S-Right>", "<cmd>vertical resize +2<CR>", opts)
 
 -- Vim file explorer
-map("n", "<leader>pv", "<cmd>Ex<CR>", opts)
+map("n", "<leader>pv", "<cmd>Vexplore<CR>", opts)
 
 -- Stay in indent mode
 map("v", "<", "<gv", opts)
@@ -53,4 +53,4 @@ map("v", "<leader>y", '"+y', opts)
 -- Telescope key mappings (project find, search and buffer)
 map("n", '<leader>pf', ":lua require'telescope.builtin'.find_files()<CR>", opts)
 map("n", '<leader>ps', ":lua require'telescope.builtin'.live_grep()<CR>", opts)
-map("n", '<leader>bo', ":lua require'telescope.builtin'.buffers()<CR>", opts)
+map("n", '<leader>ob', ":lua require'telescope.builtin'.buffers()<CR>", opts)
