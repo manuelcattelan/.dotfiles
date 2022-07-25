@@ -1,0 +1,7 @@
+.DS_Store
+zsh/.config/zsh/.antidote
+zsh/.config/zsh/.plugins
+zsh/.config/zsh/.z
+zsh/.config/zsh/.zcompdump
+zsh/.config/zsh/.zsh_*
+nvim/.config/nvim/plugin/packer_compiled.lua
