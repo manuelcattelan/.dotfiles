@@ -8,6 +8,7 @@ return require('packer').startup(function(use)
     -- My plugins here
     use 'wbthomason/packer.nvim'
     -- Colorscheme
+    use 'EdenEast/nightfox.nvim'
     use 'folke/tokyonight.nvim'
     -- Fuzzy finder and dependencies
     use 'nvim-lua/plenary.nvim'
