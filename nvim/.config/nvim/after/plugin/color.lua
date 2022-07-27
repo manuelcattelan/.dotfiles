@@ -4,8 +4,14 @@ require'nightfox'.setup({
         inverse = {
             match_paren = true
         }
+    },
+    palettes = {
+        nightfox = {
+            bg0 = 'none'
+        }
     }
 })
+
 
 vim.cmd("colorscheme nightfox")
 
