@@ -1,6 +1,5 @@
 local sets = {
     guicursor = "",
-    cursorline = true,
 
     tabstop = 4,
     softtabstop = 4,
@@ -22,8 +21,7 @@ local sets = {
     colorcolumn = "80",
     pumheight = 10,
     laststatus = 3,
-    scrolloff = 10,
-    sidescrolloff = 10,
+    scrolloff = 20,
 
     mouse = "a",
     hidden = true,
