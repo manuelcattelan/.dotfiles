@@ -1,17 +1,3 @@
--- require'nightfox'.setup({
---     options = {
---         transparent = true,
---         inverse = {
---             match_paren = true
---         }
---     },
---     palettes = {
---         nightfox = {
---             bg0 = 'none'
---         }
---     }
--- })
-
 vim.g.tokyonight_style = 'night'
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
