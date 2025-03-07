@@ -63,9 +63,9 @@ build_prompt() {
 
     # If in a git repository, show path + VCS info, otherwise just show path
     if [[ -n "$vcs_info_msg_1_" ]]; then
-        echo "${path_formatted} $vcs_info_msg_1_$(git_dirty)"
+        echo "%F{blue}${path_formatted}%f %F{8}$vcs_info_msg_1_$(git_dirty)%f"
     else
-        echo "${path_formatted}"
+        echo "%F{blue}${path_formatted}%f"
     fi
 }
 
@@ -81,7 +81,7 @@ precmd() {
 # Define prompt with:
 # - Path and git information from build_prompt
 # - Arrow symbol (➜) as prompt character
-PROMPT='$(build_prompt) ➜ '
+PROMPT='$(build_prompt) %F{yellow}➜%f '
 
 #
 # Aliases
