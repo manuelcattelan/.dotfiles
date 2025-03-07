@@ -36,7 +36,11 @@ return {
     },
     config = function()
       vim.diagnostic.config({
+        underline = false,
+        virtual_text = false,
+        update_in_insert = false,
         float = { border = "single" },
+        severity_sort = true,
       })
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "single",

@@ -12,6 +12,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
+    local goto_diagnostic = function(diagnostic_direction, diagnostic_severity)
+      local goto_function = diagnostic_direction == "next" and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+      local goto_severity = diagnostic_severity and vim.diagnostic.severity[diagnostic_severity] or nil
+      local goto_options = { float = true, severity = goto_severity }
+
+      return function()
+        return goto_function(goto_options)
+      end
+    end
+
+    vim.keymap.set("n", "[d", goto_diagnostic("prev"))
+    vim.keymap.set("n", "]d", goto_diagnostic("next"))
+    vim.keymap.set("n", "[w", goto_diagnostic("prev", "WARN"))
+    vim.keymap.set("n", "]w", goto_diagnostic("next", "WARN"))
+    vim.keymap.set("n", "[e", goto_diagnostic("prev", "ERROR"))
+    vim.keymap.set("n", "]e", goto_diagnostic("next", "ERROR"))
+
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = args.buf })
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
