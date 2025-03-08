@@ -23,9 +23,6 @@ return {
     require("telescope").setup(opts)
     require("telescope").load_extension("fzf")
 
-    vim.keymap.set("n", "<space>fd", function()
-      require("telescope.builtin").find_files({ hidden = true })
-    end)
     vim.keymap.set("n", "<space>fg", function()
       require("telescope.builtin").git_files({ show_untracked = true })
     end)
