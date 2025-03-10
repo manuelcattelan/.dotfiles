@@ -111,6 +111,7 @@ bindkey '^U' backward-kill-line
 
 bindkey '^Y' autosuggest-accept
 
+#
 # Configurations
 #
 export FZF_DEFAULT_OPTS="--bind change:top"
@@ -119,6 +120,11 @@ export FZF_CTRL_R_OPTS="--height 100% --no-sort --reverse"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Set up nvm keybindings and fuzzy completion
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Enable zsh-syntax-highlighting by sourcing the script.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
