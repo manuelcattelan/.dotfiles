@@ -43,7 +43,7 @@
 # resize-overlay-duration = 4s 200ms
 
 font-family = "Berkeley Mono"
-font-size = 13
+font-size = 15
 
 cursor-style = "block"
 cursor-style-blink = "false"
