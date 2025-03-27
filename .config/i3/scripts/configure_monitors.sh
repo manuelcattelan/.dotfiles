@@ -5,6 +5,10 @@ configure_monitors() {
     # Get the list of connected monitors
     monitors_count=$(xrandr --query | grep " connected" | wc -l)
 
+    # Laptop monitor's audio sources
+    default_source="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink.monitor"
+    default_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
+
     if [ $monitors_count -eq 2 ]; then
         # Check if the external monitor is connected
         if xrandr --query | grep -q "DP-1 connected"; then
@@ -12,8 +16,12 @@ configure_monitors() {
         fi
     else
         # Enable the laptop's monitor if no external monitors are connected
-        eval xrandr --output eDP-1 --output DP-1 --off
+        xrandr --output eDP-1 --output DP-1 --off
     fi
+
+    # Even with external monitor connected, move all audio streams to laptop
+    pactl set-default-source $default_source
+    pactl set-default-sink $default_sink
 }
 
 # Set the correct configuration for all connected monitors
