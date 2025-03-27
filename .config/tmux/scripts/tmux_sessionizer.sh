@@ -9,6 +9,7 @@ else
             $HOME/Development/personal/ \
             $HOME/Development/personal/repositories/ \
             $HOME/Development/work/ \
+            $HOME/Development/work/datapizza/ \
         -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
