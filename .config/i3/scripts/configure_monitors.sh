@@ -5,9 +5,16 @@ configure_monitors() {
     # Get the list of connected monitors
     monitors_count=$(xrandr --query | grep " connected" | wc -l)
 
-    # Laptop monitor's audio sources
-    default_source="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink.monitor"
-    default_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
+    # Bluetooth MAC address of headphones
+    headphones_mac="B8:81:FA:AF:06:0D"
+
+    # Laptop monitor's audio sink and source
+    laptop_source="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink.monitor"
+    laptop_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
+
+    # Bluetooth headphones' audio sink and source
+    headphones_source="bluez_sink.B8_81_FA_AF_06_0D.a2dp_sink.monitor"
+    headphones_sink="bluez_sink.B8_81_FA_AF_06_0D.a2dp_sink"
 
     if [ $monitors_count -eq 2 ]; then
         # Check if the external monitor is connected
@@ -19,9 +26,16 @@ configure_monitors() {
         xrandr --output eDP-1 --output DP-1 --off
     fi
 
-    # Even with external monitor connected, move all audio streams to laptop
-    pactl set-default-source $default_source
-    pactl set-default-sink $default_sink
+    # Even with external monitor connected, move all audio streams to:
+    #   - Laptop, if bluetooth headphones are not connected
+    #   - Headphones, if bluetooth headphones are connected
+    if bluetoothctl devices Connected | grep -q $headphones_mac; then
+        pactl set-default-source $headphones_source
+        pactl set-default-sink $headphones_sink
+    else
+        pactl set-default-source $laptop_source
+        pactl set-default-sink $laptop_sink
+    fi
 }
 
 # Set the correct configuration for all connected monitors
