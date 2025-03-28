@@ -24,9 +24,7 @@ if [ $1 == "on" ]; then
     # Power on bluetooth
     bluetoothctl power on
 
-    # Pair, trust and connect keyboard via MAC address
-    bluetoothctl pair $keyboard_mac
-    bluetoothctl trust $keyboard_mac
+    # Connect to keyboard via MAC address
     bluetoothctl connect $keyboard_mac
 elif [ $1 == "off" ]; then
     # Power off bluetooth

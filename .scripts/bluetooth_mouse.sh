@@ -24,9 +24,7 @@ if [ $1 == "on" ]; then
     # Power on bluetooth
     bluetoothctl power on
 
-    # Pair, trust and connect mouse via MAC address
-    bluetoothctl pair $mouse_mac
-    bluetoothctl trust $mouse_mac
+    # Connect to mouse via MAC address
     bluetoothctl connect $mouse_mac
 elif [ $1 == "off" ]; then
     # Power off bluetooth

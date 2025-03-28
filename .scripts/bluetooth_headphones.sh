@@ -22,14 +22,14 @@ echo_script_usage() {
 headphones_mac="B8:81:FA:AF:06:0D"
 
 # Connect or disconnect bluetooth headphones based on the provided mode
-if [ $1 == "on" ]; then
+if [[ $1 == "on" ]]; then
     # Bluetooth input card, source, and profile of headphones to connect to
     headphones_input_card="bluez_card.B8_81_FA_AF_06_0D"
 
     # Set different input profile based on requirements
-    if [ $2 == "audio" ]; then
+    if [[ $2 == "audio" ]]; then
         headphones_input_profile="a2dp_sink"
-    elif [ $2 == "microphone" ]; then
+    elif [[ $2 == "microphone" ]]; then
         headphones_input_profile="handsfree_head_unit"
     else
         echo_script_usage
@@ -38,9 +38,7 @@ if [ $1 == "on" ]; then
     # Power on bluetooth
     bluetoothctl power on
 
-    # Pair, trust and connect headphones via MAC address
-    bluetoothctl pair $headphones_mac
-    bluetoothctl trust $headphones_mac
+    # Connect to headphones via MAC address
     bluetoothctl connect $headphones_mac
 
     # Allow the changes to take effect
