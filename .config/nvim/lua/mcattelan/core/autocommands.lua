@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -13,12 +13,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     local goto_diagnostic = function(diagnostic_direction, diagnostic_severity)
-      local goto_function = diagnostic_direction == "next" and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-      local goto_severity = diagnostic_severity and vim.diagnostic.severity[diagnostic_severity] or nil
-      local goto_options = { float = true, severity = goto_severity }
+      local jump_severity = diagnostic_severity and vim.diagnostic.severity[diagnostic_severity] or nil
+      local jump_direction = diagnostic_direction == "next" and 1 or -1
+      local jump_options = { count = jump_direction, severity = jump_severity }
 
       return function()
-        return goto_function(goto_options)
+        return vim.diagnostic.jump(jump_options)
       end
     end
 
@@ -33,6 +33,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = args.buf })
     vim.keymap.set("n", "K", function()
       vim.lsp.buf.hover({ border = "single" })
+    end, { buffer = args.buf })
+    vim.keymap.set({ "n", "i" }, "<C-k>", function()
+      vim.lsp.buf.signature_help({ border = "single" })
     end, { buffer = args.buf })
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf })
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf })
