@@ -9,7 +9,7 @@ configure_monitors() {
     headphones_mac="B8:81:FA:AF:06:0D"
 
     # Laptop monitor's audio sink and source
-    laptop_source="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink.monitor"
+    laptop_source="alsa_input.pci-0000_64_00.6.HiFi__Mic1__source"
     laptop_sink="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
 
     # Bluetooth headphones' audio sink and source
