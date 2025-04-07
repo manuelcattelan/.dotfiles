@@ -16,7 +16,7 @@ echo_script_usage() {
 }
 
 # Toggle the source volume mute state
-if [ -n $1 ] && [ $1 == "toggle" ]; then
+if [[ -n $1 ]] && [[ $1 == "toggle" ]]; then
     pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
     if echo $(pactl get-source-mute @DEFAULT_SOURCE@) | grep -q "Mute: yes"; then
