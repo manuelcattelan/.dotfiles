@@ -4,7 +4,12 @@ return {
   priority = 1000,
   opts = {
     style = "night",
-    styles = { sidebars = "normal", floats = "normal" },
+    styles = {
+      comments = { italic = false },
+      keywords = { italic = false },
+      sidebars = "normal",
+      floats = "normal",
+    },
     lualine_bold = true,
     ---@param highlights tokyonight.Highlights
     ---@param colors ColorScheme
