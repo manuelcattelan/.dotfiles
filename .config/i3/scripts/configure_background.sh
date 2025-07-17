@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-feh --bg-fill --no-fehbg $HOME/Pictures/wallpaper.png
+feh --bg-scale --no-fehbg $HOME/Pictures/wallpaper.png
