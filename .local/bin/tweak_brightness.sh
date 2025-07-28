@@ -18,9 +18,13 @@ echo_script_usage() {
 # Adjust the screen brightness based on the provided offset
 if [ -n $1 ] && [[ $1 =~ ^(\+[0-9]+%|[0-9]+%-)$ ]]; then
     brightnessctl set $1
+    # Get current brightness value
     brightness_value_raw=$(brightnessctl get)
-    brightness_value_mapped=$((brightness_value_raw * 100 / 255 / 10 * 10))
-    dunstify "Brightness tweaked!" "Brightness is now at ~$brightness_value_mapped%." \
+    # Get maximum brightness value
+    brightness_value_max=$(brightnessctl max)
+    # Map current brightness value to 0-100 range
+    brightness_value_mapped=$((brightness_value_raw * 100 / brightness_value_max))
+    dunstify "Brightness tweaked!" "Brightness is now at $brightness_value_mapped%." \
         -u low -h string:x-dunst-stack-tag:brightness
 else
     echo_script_usage
