@@ -6,6 +6,8 @@ return {
       c = { "clang-format" },
       sh = { "beautysh" },
       zsh = { "beautysh" },
+      css = { "prettierd" },
+      html = { "prettierd" },
       javascript = { "prettierd" },
       typescript = { "prettierd" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
