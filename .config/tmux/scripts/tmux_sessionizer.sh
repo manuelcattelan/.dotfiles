@@ -11,6 +11,7 @@ else
             $HOME/Development/builds/ \
             $HOME/Development/builds/aur/ \
             $HOME/Development/work/ \
+            $HOME/Development/work/repositories/ \
         -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
