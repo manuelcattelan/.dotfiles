@@ -10,6 +10,7 @@ else
             $HOME/Development/personal/repositories/ \
             $HOME/Development/builds/ \
             $HOME/Development/builds/aur/ \
+            $HOME/Development/work/ \
         -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
