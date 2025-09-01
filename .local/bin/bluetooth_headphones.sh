@@ -44,11 +44,11 @@ if [[ $1 == "on" ]]; then
     # Connect to bluetooth headphones via MAC address
     bluetoothctl connect $headphones_mac
     # Allow changes to take effect
-    sleep 1
+    sleep 3
     # Switch to the appropriate input profile and source
     pacmd set-card-profile $headphones_input_card $headphones_input_profile
     # Allow changes to take effect
-    sleep 1
+    sleep 3
     # When bluetooth headphones are connected, move all audio streams to them
     pactl set-default-source $headphones_source
     pactl set-default-sink $headphones_sink
