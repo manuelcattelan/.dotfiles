@@ -23,14 +23,19 @@ headphones_mac="B8:81:FA:AF:06:0D"
 if [[ $1 == "on" ]]; then
     # Bluetooth headphones' input card, source, and profile
     headphones_input_card="bluez_card.B8_81_FA_AF_06_0D"
-    # Bluetooth headphones' audio sink and source
-    headphones_source="bluez_sink.B8_81_FA_AF_06_0D.a2dp_sink.monitor"
-    headphones_sink="bluez_sink.B8_81_FA_AF_06_0D.a2dp_sink"
-    # Set different input profile based on requirements
+    # Set different input profile and corresponding sink/source based on requirements
     if [[ $2 == "audio" ]]; then
+        # Set different input profile based on requirements
         headphones_input_profile="a2dp_sink"
+        # Bluetooth headphones' audio sink and source
+        headphones_source="bluez_sink.B8_81_FA_AF_06_0D.a2dp_sink.monitor"
+        headphones_sink="bluez_sink.B8_81_FA_AF_06_0D.a2dp_sink"
     elif [[ $2 == "microphone" ]]; then
+        # Set different input profile based on requirements
         headphones_input_profile="handsfree_head_unit"
+        # Bluetooth headphones' audio sink and source
+        headphones_source="bluez_source.B8_81_FA_AF_06_0D.handsfree_head_unit"
+        headphones_sink="bluez_sink.B8_81_FA_AF_06_0D.handsfree_head_unit"
     else
         echo_script_usage
     fi
@@ -42,6 +47,8 @@ if [[ $1 == "on" ]]; then
     sleep 1
     # Switch to the appropriate input profile and source
     pacmd set-card-profile $headphones_input_card $headphones_input_profile
+    # Allow changes to take effect
+    sleep 1
     # When bluetooth headphones are connected, move all audio streams to them
     pactl set-default-source $headphones_source
     pactl set-default-sink $headphones_sink
