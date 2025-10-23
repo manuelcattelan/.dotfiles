@@ -1,0 +1,6 @@
+gui:
+  border: single
+keybinding:
+  universal:
+    prevBlock: <c-p>
+    nextBlock: <c-n>
