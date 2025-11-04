@@ -1,7 +1,7 @@
 # Configure shell's history file and behavior
 HISTFILE=$ZDOTDIR/.zhistory
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Enable vi mode for the shell
 bindkey -v
