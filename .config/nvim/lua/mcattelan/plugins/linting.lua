@@ -2,8 +2,8 @@ return {
   "mfussenegger/nvim-lint",
   opts = {
     linters_by_ft = {
-      typescript = { "eslint" },
-      typescriptreact = { "eslint" },
+      typescript = { "eslint_d" },
+      typescriptreact = { "eslint_d" },
     },
   },
   config = function(_, opts)
