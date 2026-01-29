@@ -74,7 +74,6 @@ alias ls='ls -v --color=auto'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias rmdir='rm -rf'
-alias claude="CLAUDE_CONFIG_DIR=$HOME/.claude $XDG_CONFIG_HOME/nvm/versions/node/v24.11.1/bin/claude"
 
 # Custom key bindings for text manipulation and plugin actions
 autoload -U select-word-style
