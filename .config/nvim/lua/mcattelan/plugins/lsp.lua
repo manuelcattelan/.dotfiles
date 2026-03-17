@@ -43,19 +43,6 @@ return {
         automatic_installation = false,
         handlers = handlers,
       })
-
-      local base_on_attach = vim.lsp.config.oxlint.on_attach
-      vim.lsp.config("oxlint", {
-        on_attach = function(client, bufnr)
-          if not base_on_attach then return end
-          base_on_attach(client, bufnr)
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            command = "LspOxlintFixAll",
-          })
-        end,
-      })
-      vim.lsp.enable("oxlint")
     end,
   },
 }

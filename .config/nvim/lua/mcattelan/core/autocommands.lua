@@ -10,6 +10,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not client then
       return
     end
+    if client.name == "eslint" then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = args.buf,
+        command = "LspEslintFixAll",
+      })
+    end
     local goto_diagnostic = function(diagnostic_direction, diagnostic_severity)
       local jump_severity = diagnostic_severity and vim.diagnostic.severity[diagnostic_severity] or nil
       local jump_direction = diagnostic_direction == "next" and 1 or -1
