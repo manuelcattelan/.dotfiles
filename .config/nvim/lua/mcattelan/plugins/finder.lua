@@ -11,7 +11,7 @@ return {
         results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
       },
-      mappings = { i = { ["<C-h>"] = require("telescope.actions.layout").toggle_preview } },
+      mappings = { i = { ["<C-h>"] = function(...) require("telescope.actions.layout").toggle_preview(...) end } },
     },
   },
   config = function(_, opts)

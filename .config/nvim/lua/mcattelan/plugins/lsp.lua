@@ -4,12 +4,7 @@ return {
     build = ":MasonUpdate",
     opts = { ui = { border = "single", backdrop = 100 } },
     config = function(_, opts)
-      local mason = require("mason")
-      local mason_registry = require("mason-registry")
-      mason.setup(opts)
-      if mason_registry.refresh then
-        mason_registry.refresh()
-      end
+      require("mason").setup(opts)
     end,
   },
   {
@@ -25,7 +20,7 @@ return {
         underline = false,
         update_in_insert = false,
         float = { border = "single" },
-        jump = { float = true },
+        jump = { on_jump = vim.diagnostic.open_float },
       })
       local servers = { lua_ls = {} }
       local handlers = {
@@ -37,7 +32,6 @@ return {
           require("lspconfig")[server_name].setup(server)
         end,
       }
-      require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = vim.tbl_keys(servers or {}),
         automatic_installation = false,
