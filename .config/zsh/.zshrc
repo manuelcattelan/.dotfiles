@@ -94,11 +94,6 @@ source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-# Set up nvm key bindings and fuzzy completion
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 # Set up pnpm key bindings and fuzzy completion
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 case ":$PATH:" in
