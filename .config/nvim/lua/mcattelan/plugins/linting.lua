@@ -11,7 +11,9 @@ return {
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
       group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
       callback = function()
-        require("lint").try_lint()
+        require("lint").try_lint(nil, {
+          cwd = vim.fs.root(0, { "eslint.config.ts" }),
+        })
       end,
     })
   end,
